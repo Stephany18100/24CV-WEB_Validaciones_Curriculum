@@ -1,0 +1,15 @@
+﻿@model _24CV_WEB.Models.Curriculum
+
+
+<h1 class="text-center">Confirmar Eliminación</h1>
+
+<div class="row">
+    <div class="col-12">
+        <p>¿Estás seguro de que deseas eliminar el currículum de @Model.Nombre @Model.Apellidos?</p>
+        <form asp-action="ConfirmarEliminar" asp-controller="Validaciones" method="post">
+             <input type="hidden" asp-for="Id" /> 
+            <button class="btn btn-danger" type="submit">Eliminar</button>
+            <a href="@Url.Action("Lista", "Validaciones")" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</div>

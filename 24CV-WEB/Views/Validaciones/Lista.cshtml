@@ -1,0 +1,49 @@
+﻿@model IEnumerable<_24CV_WEB.Models.Curriculum>
+
+<h1 class="text-center">Lista de curriculums</h1>
+
+<div class="row">
+    <div class="col-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Fecha Nacimiento</th>
+                    <th>CURP</th>
+                    <th>Image Path</th>
+                    <th>Foto</th>
+                    <th>Ver Perfil</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Nombre</td>
+                        <td>@item.Apellidos</td>
+                        <td>@item.FechaNacimiento</td>
+                        <td>@item.CURP</td>
+                        <td>@item.RutaFoto</td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(item.RutaFoto))
+                            {
+                                <a href="@Url.Action("VPC", "Validaciones", new { id = item.Id })">
+                                    <img src="~/Fotos/@item.RutaFoto" width="150" height="150">
+                                </a>
+                            }
+                        </td>
+
+                        <td>
+                            <a href="@Url.Action("VPC", "Validaciones", new { id = item.Id })" class="btn btn-primary">Ver Perfil</a>
+                        </td>
+                       
+                        <td>
+                            <a href="@Url.Action("Eliminar", "Validaciones", new { id = item.Id })" class="btn btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
